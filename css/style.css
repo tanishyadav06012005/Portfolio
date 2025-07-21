@@ -106,6 +106,8 @@
     --tw-contain-style:
 }
 
+
+
 /*
 ! tailwindcss v3.4.15 | MIT License | https://tailwindcss.com
 */
@@ -133,6 +135,79 @@ body {
     margin: 0;
     line-height: inherit;
 }
+
+/* Add at the very top of your css/style.css file */
+:root {
+  /* ===== ZOOM CONTROL SYSTEM ===== */
+  --base-zoom: 1.1;         /* Master zoom - CHANGE THIS VALUE */
+  --desktop-zoom: var(--base-zoom);
+  --tablet-zoom: calc(var(--base-zoom) * 0.9);
+  --mobile-zoom: calc(var(--base-zoom) * 0.8);
+  
+  /* Existing color variables */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  /* ... rest of your existing variables ... */
+}
+
+/* Zoom application with smooth transitions */
+body {
+  transform: scale(var(--desktop-zoom));
+  transform-origin: top left;
+  width: calc(100vw / var(--desktop-zoom));
+  height: calc(100vh / var(--desktop-zoom));
+  transition: transform 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Responsive zoom with smooth transitions */
+@media screen and (max-width: 768px) {
+  body {
+    transform: scale(var(--mobile-zoom));
+    width: calc(100vw / var(--mobile-zoom));
+    height: calc(100vh / var(--mobile-zoom));
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+    transform: scale(var(--tablet-zoom));
+    width: calc(100vw / var(--tablet-zoom));
+    height: calc(100vh / var(--tablet-zoom));
+  }
+}
+
+/* Fix cursor canvas positioning with zoom */
+#canvas {
+  transform: scale(calc(1 / var(--desktop-zoom)));
+  transform-origin: top left;
+  width: calc(100vw * var(--desktop-zoom));
+  height: calc(100vh * var(--desktop-zoom));
+}
+
+@media screen and (max-width: 768px) {
+  #canvas {
+    transform: scale(calc(1 / var(--mobile-zoom)));
+    width: calc(100vw * var(--mobile-zoom));
+    height: calc(100vh * var(--mobile-zoom));
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #canvas {
+    transform: scale(calc(1 / var(--tablet-zoom)));
+    width: calc(100vw * var(--tablet-zoom));
+    height: calc(100vh * var(--tablet-zoom));
+  }
+}
+
+/* Prevent zoom from affecting scrollbars */
+html {
+  overflow-x: hidden;
+}
+
+/* Rest of your existing CSS continues below... */
+
 
 hr {
     height: 0;
