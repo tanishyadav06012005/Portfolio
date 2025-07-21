@@ -3,7 +3,7 @@
    ================================ */
 :root {
   /* ===== ZOOM CONTROL SYSTEM ===== */
-  --base-zoom: 1;         /* Master zoom - CHANGE THIS VALUE (1.0 = normal, 1.1 = 110%, 0.9 = 90%) */
+  --base-zoom: 0.85;         /* Master zoom - CHANGE THIS VALUE (1.0 = normal, 1.1 = 110%, 0.9 = 90%) */
   --desktop-zoom: var(--base-zoom);
   --tablet-zoom: calc(var(--base-zoom) * 0.95);
   --mobile-zoom: calc(var(--base-zoom) * 0.9);
