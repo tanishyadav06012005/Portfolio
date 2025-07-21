@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaynab - AI/ML Developer & Full Stack Engineer</title>
+    <meta name="description" content="Jaynab - AI/ML Developer and Full Stack Engineer specializing in Machine Learning, Deep Learning, and Modern Web Technologies">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="antialiased">
+    <!-- Background Gradient Orbs -->
+    <div class="bg-transparent h-[100vh] fixed inset-0 flex items-center justify-center px-16">
+        <div class="relative w-full max-w-lg">
+            <div class="absolute top-0 -left-4 w-[600px] h-[600px] bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div class="absolute -bottom-8 left-20 w-[600px] h-[600px] bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+    </div>
+
+    <!-- Cursor Canvas -->
+    <canvas class="pointer-events-none fixed inset-0 z-10" id="canvas"></canvas>
+    
+    <!-- Main Content -->
+    <div class="absolute inset-0 z-20 max-w-screen-lg mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Sidebar -->
+            <aside class="md:col-span-1">
+                <!-- Profile Card -->
+                <div class="rounded-lg text-card-foreground shadow-sm bg-background/10 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                    <div class="p-6 pt-6">
+                        <div class="flex flex-col items-start gap-2">
+                            <div class="flex flex-row md:flex-col items-center md:items-start w-full gap-4">
+                               <img alt="Profile Picture" loading="lazy" width="600" height="600"
+  class="rounded-md size-12 md:w-full h-auto object-cover"
+  src="assets/profile.png" />
+
+                                <div class="flex flex-col items-start justify-center">
+                                    <h1 class="font-bold md:mt-4 text-xl md:text-2xl">Jaynab</h1>
+                                    <p class="text-sm md:text-base text-muted-foreground">Software Developer</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Links -->
+                            <div class="mt-4 flex flex-col space-y-2 border-t border-border pt-4 w-full">
+                                <a target="_blank" aria-label="Github Logo" class="cursor-pointer flex items-center gap-2 group" href="https://github.com/JaynabP">
+                                    <i class="fab fa-github size-4"></i>
+                                    <p class="text-sm text-muted-foreground group-hover:text-primary transition-color duration-200 ease-linear">Github</p>
+                                </a>
+                                <a target="_blank" aria-label="LinkedIn Logo" class="cursor-pointer flex items-center gap-2 group" href="https://www.linkedin.com/in/jaynab-p-043501290/">
+                                    <i class="fab fa-linkedin-in size-4"></i>
+                                    <p class="text-sm text-muted-foreground group-hover:text-primary transition-color duration-200 ease-linear">LinkedIn</p>
+                                </a>
+                                <a target="_blank" aria-label="LeetCode Logo" class="cursor-pointer flex items-center gap-2 group" href="https://leetcode.com/u/Jaynab_/">
+                                    <i class="fas fa-code size-4"></i>
+                                    <p class="text-sm text-muted-foreground group-hover:text-primary transition-color duration-200 ease-linear">LeetCode</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Card -->
+                <div class="rounded-lg text-card-foreground shadow-sm mt-6 bg-white/30 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                    <div class="flex flex-col space-y-1.5 p-6">
+                        <div class="text-2xl font-semibold leading-none tracking-tight">Skills</div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex flex-wrap gap-2">
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">JavaScript</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Python</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">C++</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">SQL</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">React.js</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Node.js</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Express.js</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Next.js</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">jQuery</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">HTML</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">CSS</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">NumPy</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Pandas</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Flask</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Scikit-Learn</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">PyTorch</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">Bootstrap</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">MySQL</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">MongoDB</div>
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">PostgreSQL</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="md:col-span-2">
+                <!-- About Me Section -->
+                <div class="rounded-lg text-card-foreground shadow-sm mb-6 bg-white/30 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                    <div class="flex flex-col space-y-1.5 p-6">
+                        <div class="text-2xl font-semibold leading-none tracking-tight">About Me</div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <p class="text-muted-foreground">
+                            Hi, I'm Jaynab! 🚀 A passionate AI/ML developer and full-stack engineer pursuing B.Tech in CSE-Maths & Computing at NSUT. I specialize in creating intelligent systems that solve real-world problems, from healthcare insurance platforms to autonomous driving solutions. When I'm not training neural networks, you'll find me building modern web applications and exploring the latest in technology innovation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <h2 class="text-xl font-bold mb-4">Featured Projects</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <!-- Project 1 -->
+                    <div class="rounded-lg text-card-foreground shadow-sm bg-white/30 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                        <div class="p-6 pt-6 h-full">
+                            <div class="flex flex-col h-full">
+                                <div class="flex items-center justify-between">
+                                    <a rel="noopener noreferrer" class="font-semibold text-primary hover:underline" href="https://github.com/JaynabP/Health-Insurance-AI-Assistant-MedicalInsurance">AI-Assisted Healthcare Insurance app</a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/JaynabP/Health-Insurance-AI-Assistant-MedicalInsurance">
+                                        <i class="fab fa-github inline-block cursor-pointer size-5 ml-2"></i>
+                                    </a>
+                                </div>
+                                
+                                <div class="text-sm text-muted-foreground mt-1 mb-4">
+                                    <ul class="list-none pl-4 space-y-2 cursor-pointer">
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Cross-platform insurance platform using Next.js and React Native.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">AI-driven chatbot and health APIs integration.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Reward-based system with dynamic UI updates.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex relative gap-2">
+                                        <div class="size-3 absolute inset-0 justify-center animate-ping items-center rounded-full bg-red-500"></div>
+                                        <div class="size-3 justify-center items-center rounded-full bg-red-500"></div>
+                                        <span class="text-xs font-medium text-muted-foreground">Next.js</span>
+                                    </div>
+                                    <a rel="noopener noreferrer" target="_blank" class="flex items-center gap-2 text-sm text-primary hover:underline" href="https://github.com/JaynabP/Health-Insurance-AI-Assistant-MedicalInsurance">
+                                        View Project
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link inline-block size-3">
+                                            <path d="M15 3h6v6"></path>
+                                            <path d="M10 14 21 3"></path>
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="rounded-lg text-card-foreground shadow-sm bg-white/30 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                        <div class="p-6 pt-6 h-full">
+                            <div class="flex flex-col h-full">
+                                <div class="flex items-center justify-between">
+                                    <a rel="noopener noreferrer" class="font-semibold text-primary hover:underline" href="https://github.com/JaynabP/2D-Object-Detection-for-Autonomous-Driving">2D Object Detection for Autonomous Driving</a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/JaynabP/2D-Object-Detection-for-Autonomous-Driving">
+                                        <i class="fab fa-github inline-block cursor-pointer size-5 ml-2"></i>
+                                    </a>
+                                </div>
+                                
+                                <div class="text-sm text-muted-foreground mt-1 mb-4">
+                                    <ul class="list-none pl-4 space-y-2 cursor-pointer">
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">YOLOv5 on KITTI dataset for autonomous driving perception.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Modular, production-ready ML pipeline.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Scalable, reproducible experimentation through clean architecture.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex relative gap-2">
+                                        <div class="size-3 absolute inset-0 justify-center animate-ping items-center rounded-full bg-yellow-500"></div>
+                                        <div class="size-3 justify-center items-center rounded-full bg-yellow-500"></div>
+                                        <span class="text-xs font-medium text-muted-foreground">PyTorch</span>
+                                    </div>
+                                    <a rel="noopener noreferrer" target="_blank" class="flex items-center gap-2 text-sm text-primary hover:underline" href="https://github.com/JaynabP/2D-Object-Detection-for-Autonomous-Driving">
+                                        View Project
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link inline-block size-3">
+                                            <path d="M15 3h6v6"></path>
+                                            <path d="M10 14 21 3"></path>
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="rounded-lg text-card-foreground shadow-sm bg-white/30 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                        <div class="p-6 pt-6 h-full">
+                            <div class="flex flex-col h-full">
+                                <div class="flex items-center justify-between">
+                                    <a rel="noopener noreferrer" class="font-semibold text-primary hover:underline" href="https://github.com/JaynabP/CampusPulse">CampusPulse</a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/JaynabP/CampusPulse">
+                                        <i class="fab fa-github inline-block cursor-pointer size-5 ml-2"></i>
+                                    </a>
+                                </div>
+                                
+                                <div class="text-sm text-muted-foreground mt-1 mb-4">
+                                    <ul class="list-none pl-4 space-y-2 cursor-pointer">
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">AI-powered campus platform for scholarships and services.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">User-friendly interface with comprehensive features.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Normalized 3NF database for data consistency and scalability.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex relative gap-2">
+                                        <div class="size-3 absolute inset-0 justify-center animate-ping items-center rounded-full bg-blue-500"></div>
+                                        <div class="size-3 justify-center items-center rounded-full bg-blue-500"></div>
+                                        <span class="text-xs font-medium text-muted-foreground">React.js</span>
+                                    </div>
+                                    <a rel="noopener noreferrer" target="_blank" class="flex items-center gap-2 text-sm text-primary hover:underline" href="https://github.com/JaynabP/CampusPulse">
+                                        View Project
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link inline-block size-3">
+                                            <path d="M15 3h6v6"></path>
+                                            <path d="M10 14 21 3"></path>
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="rounded-lg text-card-foreground shadow-sm bg-white/30 backdrop-filter backdrop-blur-2xl bg-opacity-20 border border-gray-100">
+                        <div class="p-6 pt-6 h-full">
+                            <div class="flex flex-col h-full">
+                                <div class="flex items-center justify-between">
+                                    <a rel="noopener noreferrer" class="font-semibold text-primary hover:underline" href="https://github.com/JaynabP/Healthcare-Management-System">Healthcare Management System</a>
+                                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/JaynabP/Healthcare-Management-System">
+                                        <i class="fab fa-github inline-block cursor-pointer size-5 ml-2"></i>
+                                    </a>
+                                </div>
+                                
+                                <div class="text-sm text-muted-foreground mt-1 mb-4">
+                                    <ul class="list-none pl-4 space-y-2 cursor-pointer">
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Full-stack web-based Healthcare Management System.</span>
+                                        </li>
+                                        <li class="p-1 relative group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big absolute h-4 w-4 text-gray-400 transition-all duration-300 ease-in-out group-hover:text-green-500 group-hover:scale-110">
+                                                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                                                <path d="m9 11 3 3L22 4"></path>
+                                            </svg>
+                                            <span class="peer ml-5 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-black">Secure authentication and appointment scheduling.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mt-auto flex items-center justify-between">
+                                    <div class="flex relative gap-2">
+                                        <div class="size-3 absolute inset-0 justify-center animate-ping items-center rounded-full bg-purple-500"></div>
+                                        <div class="size-3 justify-center items-center rounded-full bg-purple-500"></div>
+                                        <span class="text-xs font-medium text-muted-foreground">PHP</span>
+                                    </div>
+                                    <a rel="noopener noreferrer" target="_blank" class="flex items-center gap-2 text-sm text-primary hover:underline" href="https://github.com/JaynabP/Healthcare-Management-System">
+                                        View Project
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link inline-block size-3">
+                                            <path d="M15 3h6v6"></path>
+                                            <path d="M10 14 21 3"></path>
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/cursor-effects.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
