@@ -1,3 +1,74 @@
+/* ================================
+   ZOOM CONTROL SYSTEM - EASY TO ADJUST
+   ================================ */
+:root {
+  /* ===== ZOOM CONTROL SYSTEM ===== */
+  --base-zoom: 1;         /* Master zoom - CHANGE THIS VALUE (1.0 = normal, 1.1 = 110%, 0.9 = 90%) */
+  --desktop-zoom: var(--base-zoom);
+  --tablet-zoom: calc(var(--base-zoom) * 0.95);
+  --mobile-zoom: calc(var(--base-zoom) * 0.9);
+}
+
+/* Zoom application with smooth transitions */
+body {
+  transform: scale(var(--desktop-zoom));
+  transform-origin: top left;
+  width: calc(100vw / var(--desktop-zoom));
+  height: calc(100vh / var(--desktop-zoom));
+  transition: transform 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Responsive zoom with smooth transitions */
+@media screen and (max-width: 768px) {
+  body {
+    transform: scale(var(--mobile-zoom));
+    width: calc(100vw / var(--mobile-zoom));
+    height: calc(100vh / var(--mobile-zoom));
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+    transform: scale(var(--tablet-zoom));
+    width: calc(100vw / var(--tablet-zoom));
+    height: calc(100vh / var(--tablet-zoom));
+  }
+}
+
+/* Fix cursor canvas positioning with zoom */
+#canvas {
+  transform: scale(calc(1 / var(--desktop-zoom)));
+  transform-origin: top left;
+  width: calc(100vw * var(--desktop-zoom));
+  height: calc(100vh * var(--desktop-zoom));
+}
+
+@media screen and (max-width: 768px) {
+  #canvas {
+    transform: scale(calc(1 / var(--mobile-zoom)));
+    width: calc(100vw * var(--mobile-zoom));
+    height: calc(100vh * var(--mobile-zoom));
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #canvas {
+    transform: scale(calc(1 / var(--tablet-zoom)));
+    width: calc(100vw * var(--tablet-zoom));
+    height: calc(100vh * var(--tablet-zoom));
+  }
+}
+
+/* Prevent zoom from affecting scrollbars */
+html {
+  overflow-x: hidden;
+  font-size: 100%;
+}
+
+/* ================================
+   TAILWIND CSS BASE STYLES
+   ================================ */
 *,:after,:before {
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
@@ -106,8 +177,6 @@
     --tw-contain-style:
 }
 
-
-
 /*
 ! tailwindcss v3.4.15 | MIT License | https://tailwindcss.com
 */
@@ -134,80 +203,9 @@
 body {
     margin: 0;
     line-height: inherit;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground))
 }
-
-/* Add at the very top of your css/style.css file */
-:root {
-  /* ===== ZOOM CONTROL SYSTEM ===== */
-  --base-zoom: 1.1;         /* Master zoom - CHANGE THIS VALUE */
-  --desktop-zoom: var(--base-zoom);
-  --tablet-zoom: calc(var(--base-zoom) * 0.9);
-  --mobile-zoom: calc(var(--base-zoom) * 0.8);
-  
-  /* Existing color variables */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
-  /* ... rest of your existing variables ... */
-}
-
-/* Zoom application with smooth transitions */
-body {
-  transform: scale(var(--desktop-zoom));
-  transform-origin: top left;
-  width: calc(100vw / var(--desktop-zoom));
-  height: calc(100vh / var(--desktop-zoom));
-  transition: transform 0.3s ease;
-  overflow-x: hidden;
-}
-
-/* Responsive zoom with smooth transitions */
-@media screen and (max-width: 768px) {
-  body {
-    transform: scale(var(--mobile-zoom));
-    width: calc(100vw / var(--mobile-zoom));
-    height: calc(100vh / var(--mobile-zoom));
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  body {
-    transform: scale(var(--tablet-zoom));
-    width: calc(100vw / var(--tablet-zoom));
-    height: calc(100vh / var(--tablet-zoom));
-  }
-}
-
-/* Fix cursor canvas positioning with zoom */
-#canvas {
-  transform: scale(calc(1 / var(--desktop-zoom)));
-  transform-origin: top left;
-  width: calc(100vw * var(--desktop-zoom));
-  height: calc(100vh * var(--desktop-zoom));
-}
-
-@media screen and (max-width: 768px) {
-  #canvas {
-    transform: scale(calc(1 / var(--mobile-zoom)));
-    width: calc(100vw * var(--mobile-zoom));
-    height: calc(100vh * var(--mobile-zoom));
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  #canvas {
-    transform: scale(calc(1 / var(--tablet-zoom)));
-    width: calc(100vw * var(--tablet-zoom));
-    height: calc(100vh * var(--tablet-zoom));
-  }
-}
-
-/* Prevent zoom from affecting scrollbars */
-html {
-  overflow-x: hidden;
-}
-
-/* Rest of your existing CSS continues below... */
-
 
 hr {
     height: 0;
@@ -226,7 +224,8 @@ h1,h2,h3,h4,h5,h6 {
 
 a {
     color: inherit;
-    text-decoration: inherit
+    text-decoration: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 b,strong {
@@ -375,6 +374,9 @@ img,video {
     display: none
 }
 
+/* ================================
+   COLOR SYSTEM VARIABLES
+   ================================ */
 :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -405,11 +407,6 @@ img,video {
 
 * {
     border-color: hsl(var(--border))
-}
-
-body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground))
 }
 
 .container {
@@ -446,6 +443,9 @@ body {
     }
 }
 
+/* ================================
+   UTILITY CLASSES
+   ================================ */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -739,21 +739,21 @@ body {
     --tw-translate-y: -50%
 }
 
+/* ================================
+   ANIMATIONS
+   ================================ */
 @keyframes blob {
     0% {
         transform: translate(0) scale(1)
     }
-
     33% {
         transform: translate(30px,-50px) scale(1.1)
     }
-
     66% {
         transform: translate(-20px,20px) scale(.9)
     }
-
     to {
-        transform: tranlate(0,0) scale(1)
+        transform: translate(0,0) scale(1)
     }
 }
 
@@ -862,6 +862,18 @@ body {
     margin-bottom: calc(.5rem * var(--tw-space-y-reverse))
 }
 
+.space-y-4>:not([hidden])~:not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+}
+
+.space-y-6>:not([hidden])~:not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1.5rem * var(--tw-space-y-reverse))
+}
+
 .space-y-8>:not([hidden])~:not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
@@ -888,6 +900,10 @@ body {
     border-radius: var(--radius)
 }
 
+.rounded-xl {
+    border-radius: calc(var(--radius) * 1.5)
+}
+
 .rounded-md {
     border-radius: calc(var(--radius) - 2px)
 }
@@ -908,6 +924,10 @@ body {
     border-top-width: 1px
 }
 
+.border-l-4 {
+    border-left-width: 4px
+}
+
 .border-border {
     border-color: hsl(var(--border))
 }
@@ -925,6 +945,36 @@ body {
     border-color: transparent
 }
 
+.border-purple-400 {
+    --tw-border-opacity: 1;
+    border-color: rgb(196 181 253/var(--tw-border-opacity,1))
+}
+
+.border-blue-400 {
+    --tw-border-opacity: 1;
+    border-color: rgb(96 165 250/var(--tw-border-opacity,1))
+}
+
+.border-green-400 {
+    --tw-border-opacity: 1;
+    border-color: rgb(74 222 128/var(--tw-border-opacity,1))
+}
+
+.border-yellow-400 {
+    --tw-border-opacity: 1;
+    border-color: rgb(250 204 21/var(--tw-border-opacity,1))
+}
+
+.border-green-200 {
+    --tw-border-opacity: 1;
+    border-color: rgb(187 247 208/var(--tw-border-opacity,1))
+}
+
+.border-blue-200 {
+    --tw-border-opacity: 1;
+    border-color: rgb(191 219 254/var(--tw-border-opacity,1))
+}
+
 .bg-background {
     background-color: hsl(var(--background))
 }
@@ -940,6 +990,16 @@ body {
 .bg-blue-500 {
     --tw-bg-opacity: 1;
     background-color: rgb(59 130 246/var(--tw-bg-opacity,1))
+}
+
+.bg-green-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 252 231/var(--tw-bg-opacity,1))
+}
+
+.bg-blue-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254/var(--tw-bg-opacity,1))
 }
 
 .bg-card {
@@ -1014,6 +1074,10 @@ body {
 
 .p-6 {
     padding: 1.5rem
+}
+
+.p-2 {
+    padding: .5rem
 }
 
 .px-16 {
@@ -1139,6 +1203,21 @@ body {
     color: rgb(37 99 235/var(--tw-text-opacity,1))
 }
 
+.text-blue-800 {
+    --tw-text-opacity: 1;
+    color: rgb(30 64 175/var(--tw-text-opacity,1))
+}
+
+.text-green-600 {
+    --tw-text-opacity: 1;
+    color: rgb(22 163 74/var(--tw-text-opacity,1))
+}
+
+.text-green-800 {
+    --tw-text-opacity: 1;
+    color: rgb(22 101 52/var(--tw-text-opacity,1))
+}
+
 .text-card-foreground {
     color: hsl(var(--card-foreground))
 }
@@ -1251,6 +1330,12 @@ body {
     transition-duration: .15s
 }
 
+.transition-color {
+    transition-property: color;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s
+}
+
 .transition-opacity {
     transition-property: opacity;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
@@ -1348,6 +1433,11 @@ body {
 
 .hover\:text-accent-foreground:hover {
     color: hsl(var(--accent-foreground))
+}
+
+.hover\:text-blue-800:hover {
+    --tw-text-opacity: 1;
+    color: rgb(30 64 175/var(--tw-text-opacity,1))
 }
 
 .hover\:underline:hover {
@@ -1565,6 +1655,9 @@ body {
     flex-shrink: 0
 }
 
+/* ================================
+   CUSTOM FONTS (if using web fonts)
+   ================================ */
 @font-face {
     font-family: geistSans;
     src: url(/_next/static/media/4473ecc91f70f139-s.p.woff) format("woff");
@@ -1575,7 +1668,8 @@ body {
 @font-face {
     font-family: geistSans Fallback;
     src: local("Arial");
-    ascent-override:85.83%;descent-override:20.52%;line-gap-override:9.33%;size-adjust:107.19%}
+    ascent-override:85.83%;descent-override:20.52%;line-gap-override:9.33%;size-adjust:107.19%
+}
 
 .__className_1e4310 {
     font-family: geistSans,geistSans Fallback
@@ -1595,7 +1689,8 @@ body {
 @font-face {
     font-family: geistMono Fallback;
     src: local("Arial");
-    ascent-override:69.97%;descent-override:16.73%;line-gap-override:7.61%;size-adjust:131.49%}
+    ascent-override:69.97%;descent-override:16.73%;line-gap-override:7.61%;size-adjust:131.49%
+}
 
 .__className_c3aa02 {
     font-family: geistMono,geistMono Fallback
@@ -1605,102 +1700,11 @@ body {
     --font-geist-mono: "geistMono","geistMono Fallback"
 }
 
-/* Enhanced styles for the portfolio - Add these to your existing CSS */
+/* ================================
+   ENHANCED CUSTOM STYLES
+   ================================ */
 
-/* Gradient text effect */
-.gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Profile image enhancements */
-.profile-image-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.profile-img {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 3px solid rgba(255, 255, 255, 0.3);
-}
-
-.profile-img:hover {
-    transform: scale(1.05);
-    border-color: rgba(102, 126, 234, 0.5);
-}
-
-/* Enhanced skill tags */
-.skill-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.skill-tag::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-}
-
-.skill-tag:hover::before {
-    left: 100%;
-}
-
-.ai-tag {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-    color: #667eea;
-    border: 1px solid rgba(102, 126, 234, 0.3);
-}
-
-.lang-tag {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
-    color: #3b82f6;
-    border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.framework-tag {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.db-tag {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.2));
-    color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-.tech-tag {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
-    color: #6366f1;
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.tech-tag:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
-    transform: translateY(-1px);
-}
-
-/* Enhanced hover effects */
+/* Enhanced hover effects for all cards */
 .hover-card {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -1729,100 +1733,20 @@ body {
     opacity: 1;
 }
 
-.hover-lift {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Enhanced animations for the check icons in project lists */
+.group:hover .lucide-circle-check-big {
+    --tw-text-opacity: 1;
+    color: rgb(34 197 94/var(--tw-text-opacity,1));
+    transform: scale(1.1);
 }
 
-.hover-lift:hover {
-    transform: translateY(-3px);
+/* Enhanced skill badge hover effects */
+.inline-flex.items-center.rounded-full:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.hover-scale {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-scale:hover {
-    transform: scale(1.05);
-}
-
-/* Enhanced project cards */
-.project-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s ease;
-}
-
-.project-card:hover::after {
-    left: 100%;
-}
-
-/* Timeline styles */
-.border-gradient {
-    border-image: linear-gradient(to bottom, #667eea, #764ba2) 1;
-}
-
-/* Enhanced animations */
-@keyframes pulse-slow {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scale(1.05);
-    }
-}
-
-.animate-pulse-slow {
-    animation: pulse-slow 3s ease-in-out infinite;
-}
-
-/* Typewriter effect */
-.typewriter-text {
-    overflow: hidden;
-    border-right: 3px solid rgba(102, 126, 234, 0.7);
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: rgba(102, 126, 234, 0.7); }
-}
-
-/* Responsive enhancements */
-@media (max-width: 768px) {
-    .typewriter-text {
-        border-right: none;
-        animation: none;
-        white-space: normal;
-    }
-    
-    .hover-card:hover {
-        transform: translateY(-4px);
-    }
-    
-    .grid-cols-2 {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -1841,3 +1765,18 @@ body {
     background: linear-gradient(135deg, #5a67d8, #6b46c1);
 }
 
+/* Fix for blob animation typo */
+@keyframes blob {
+    0% {
+        transform: translate(0) scale(1)
+    }
+    33% {
+        transform: translate(30px,-50px) scale(1.1)
+    }
+    66% {
+        transform: translate(-20px,20px) scale(.9)
+    }
+    to {
+        transform: translate(0,0) scale(1) /* Fixed the typo */
+    }
+}
